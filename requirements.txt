@@ -1,3 +1,3 @@
 streamlit
-chatterbot==1.0.4 pytz
+chatterbot
 chatterbot_corpus
