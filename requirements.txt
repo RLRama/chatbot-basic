@@ -1,3 +1,5 @@
 streamlit
-chatterbot
-chatterbot_corpus
+nltk
+numpy
+tensorflow
+streamlit-chat
