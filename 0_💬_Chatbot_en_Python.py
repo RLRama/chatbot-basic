@@ -1,5 +1,8 @@
 import streamlit as st
 import nltk
+import json
+import string
+import random
 import numpy as np
 import tensorflow as tf
 from streamlit_chat import message
