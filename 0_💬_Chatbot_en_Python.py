@@ -34,7 +34,7 @@ def generate_answer():
     st.session_state.history.append({"message": message_bot, "is_user": False})
 
 
-st.text_input("Talk to the bot", key="input_text", on_change=generate_answer)
-
 for chat in st.session_state.history:
     st_message(**chat)
+
+st.text_input("Hablá con el chatbot", key="input_text", on_change=generate_answer)
