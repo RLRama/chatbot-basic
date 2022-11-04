@@ -3,3 +3,5 @@ nltk
 numpy
 tensorflow
 streamlit-chat
+chatterbot
+chatterbot_corpus
