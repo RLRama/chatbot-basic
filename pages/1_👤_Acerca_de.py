@@ -1,5 +1,6 @@
 import streamlit as st
 
+st.balloons()
 st.set_page_config(
     page_title="Información de proyecto",
     page_icon="💬",

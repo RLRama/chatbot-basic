@@ -4,6 +4,11 @@ import requests
 from transformers import BlenderbotTokenizer, BlenderbotForConditionalGeneration
 from streamlit_chat import message as st_message
 
+st.set_page_config(
+    page_title="Chatbot con Python",
+    page_icon="💬",
+)
+
 st.image(
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/robot_1f916.png",
     width=100
@@ -24,7 +29,7 @@ st.sidebar.markdown(
     
     """
 )
-
+#Caché del modelo de Huggingface
 @st.experimental_singleton
 def get_models():
     model_name = "facebook/blenderbot-400M-distill"
@@ -32,9 +37,11 @@ def get_models():
     model = BlenderbotForConditionalGeneration.from_pretrained(model_name)
     return tokenizer, model
 
+#Inicializar el estado de sesión de Streamlit
 if "history" not in st.session_state:
     st.session_state.history = []
 
+#Generación de respuesta
 def generate_answer():
     tokenizer, model = get_models()
     user_message = st.session_state.input_text
@@ -44,9 +51,11 @@ def generate_answer():
         result[0], skip_special_tokens=True
     )
 
+    #Guardar respuesta en historial de estado
     st.session_state.history.append({"message": user_message, "is_user": True})
     st.session_state.history.append({"message": message_bot, "is_user": False})
 
+#Mostrar historial de chat
 for chat in st.session_state.history:
     st_message(**chat)
 
