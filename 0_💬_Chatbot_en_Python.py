@@ -1,17 +1,13 @@
 import streamlit as st
-import torch
-import transformers
+import requests
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from streamlit_chat import message
 from matplotlib.pyplot import text
 
-@st.cache(hash_funcs={transformers.models.gpt2.tokenization_gpt2_fast.GPT2TokenizerFast: hash}, suppress_st_warning=True)
-def load_data():    
-    tokenizer = AutoTokenizer.from_pretrained("facebook/blenderbot-400M-distill")
-    model = AutoModelForCausalLM.from_pretrained("facebook/blenderbot-400M-distill")
-    return tokenizer, model
-
-tokenizer, model = load_data()
+st.set_page_config(
+    page_title="Chatbot con Python y Streamlit",
+    page_icon="💬"
+)
 
 st.image(
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/robot_1f916.png",
@@ -21,27 +17,42 @@ st.title('¡Chatbot con Python!')
 st.header('Hola, chatbot')
 st.markdown('Bienvenido al chatbot. ¡**Todavía estoy aprendiendo**, porfavor tenga paciencia!')
 
-st.write("Welcome to the Chatbot. I am still learning, please be patient")
-input = st.text_input('User:')
+API_URL = "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill"
+headers = {"Authorization": st.secrets['api_key']}
 
-if 'count' not in st.session_state or st.session_state.count == 6:
- st.session_state.count = 0 
- st.session_state.chat_history_ids = None
- st.session_state.old_response = ''
-else:
- st.session_state.count += 1
-new_user_input_ids = tokenizer.encode(input + tokenizer.eos_token, return_tensors='pt')
+st.header("Streamlit Chat - Demo")
+st.markdown("[Github](https://github.com/ai-yash/st-chat)")
 
-bot_input_ids = torch.cat([st.session_state.chat_history_ids, new_user_input_ids], dim=-1) if st.session_state.count > 1 else new_user_input_ids
-st.session_state.chat_history_ids = model.generate(bot_input_ids, max_length=5000, pad_token_id=tokenizer.eos_token_id)
-response = tokenizer.decode(st.session_state.chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
+if 'generated' not in st.session_state:
+    st.session_state['generated'] = []
 
-if st.session_state.old_response == response:
-   bot_input_ids = new_user_input_ids
- 
-   st.session_state.chat_history_ids = model.generate(bot_input_ids, max_length=5000, pad_token_id=tokenizer.eos_token_id) 
+if 'past' not in st.session_state:
+    st.session_state['past'] = []
 
-   response = tokenizer.decode(st.session_state.chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
+def query(payload):
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.json()
 
-st.write(f"Chatbot: {response}")
-st.session_state.old_response = response
+def get_text():
+    input_text = st.text_input("You: ","Hello, how are you?", key="input")
+    return input_text 
+
+user_input = get_text()
+
+if user_input:
+    output = query({
+        "inputs": {
+            "past_user_inputs": st.session_state.past,
+            "generated_responses": st.session_state.generated,
+            "text": user_input,
+        },"parameters": {"repetition_penalty": 1.33},
+    })
+
+    st.session_state.past.append(user_input)
+    st.session_state.generated.append(output["generated_text"])
+
+if st.session_state['generated']:
+
+    for i in range(len(st.session_state['generated'])-1, -1, -1):
+        message(st.session_state["generated"][i], key=str(i))
+        message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
