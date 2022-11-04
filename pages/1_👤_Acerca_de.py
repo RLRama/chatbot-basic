@@ -1,10 +1,6 @@
 import streamlit as st
 
 st.balloons()
-st.set_page_config(
-    page_title="Información de proyecto",
-    page_icon="💬",
-)
 
 st.image(
     "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/memo_1f4dd.png",
