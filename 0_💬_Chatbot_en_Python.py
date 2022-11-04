@@ -13,5 +13,5 @@ from tensorflow.keras.layers import Dense, Dropout
 nltk.download("punkt")
 nltk.download("wordnet")
 
-data_file = open('intents.json').read()
+data_file = open('chatbot\intents.json').read()
 data = json.loads(data_file)
