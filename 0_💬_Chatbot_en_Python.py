@@ -11,6 +11,20 @@ st.image(
 st.title('¡Chatbot con Python!')
 st.markdown('Bienvenido al chatbot. ¡**Todavía estoy aprendiendo**, porfavor tenga paciencia!')
 
+st.sidebar.markdown(
+    """
+    ### Desarrollado por
+    - Rios Lopez Ramiro Ignacio
+    - [Perfil en GitHub](https://github.com/RLRama)
+    - [Perfil en LinkedIn](https://www.linkedin.com/in/ramiro-ignacio-rios-lopez-bb1006225/)
+    ---
+    - Dominguez Sotomayor Santiago Ismael
+    - [Perfil en GitHub](https://github.com/SantiDominguez1)
+    - [Perfil en LinkedIn](https://www.linkedin.com/in/santiago-ismael-dominguez-sotomayor-a55009225//)
+    
+    """
+)
+
 @st.experimental_singleton
 def get_models():
     model_name = "facebook/blenderbot-400M-distill"
@@ -33,7 +47,7 @@ def generate_answer():
     st.session_state.history.append({"message": user_message, "is_user": True})
     st.session_state.history.append({"message": message_bot, "is_user": False})
 
-st.text_input("Hablá con el chatbot", key="input_text", on_change=generate_answer, placeholder = "Sólo entiendo en inglés")
-
 for chat in st.session_state.history:
     st_message(**chat)
+
+st.text_input("Hablá con el chatbot", key="input_text", on_change=generate_answer, placeholder = "Sólo entiendo en inglés")
