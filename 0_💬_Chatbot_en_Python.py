@@ -11,6 +11,8 @@ from tensorflow.keras.layers import Dense, Dropout
 nltk.download("punkt")
 nltk.download("wordnet")
 
-data_file = open("intents.json").read()
-data = json.loads(data_file)
+json_file_path = "intents.json"
+with open(json_file_path, 'r').read() as j:
+    contents = json.loads(j.read())
 
+st.write(contents)
