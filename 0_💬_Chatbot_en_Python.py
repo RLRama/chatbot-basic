@@ -14,7 +14,7 @@ def load_data():
 tokenizer, model = load_data()
 
 st.image(
-    "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/robot_1f916.png"
+    "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/325/robot_1f916.png",
     width=100
 )
 st.title('¡Chatbot con Python!')
