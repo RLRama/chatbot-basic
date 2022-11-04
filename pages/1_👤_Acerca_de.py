@@ -30,7 +30,7 @@ st.markdown(
 )
 
 st.markdown("### Integrantes del proyecto")
-tab1, tab2 = st.tabas(["Dominguez Sotomayor Santiago Ismael", "Rios Lopez Ramiro Ignacio"])
+tab1, tab2 = st.tabs(["Dominguez Sotomayor Santiago Ismael", "Rios Lopez Ramiro Ignacio"])
 
 with tab1:
     st.image("pages\DSSI.png")
