@@ -71,6 +71,6 @@ with tab2:
         - [Perfil en LinkedIn](https://www.linkedin.com/in/ramiro-ignacio-rios-lopez-bb1006225/)
         ---
         ### Correo electrónico
-        - santiuni04@gmail.com
+        - rl.ramiro11@gmail.com
         """
     )
