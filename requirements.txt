@@ -2,3 +2,4 @@ streamlit
 nltk
 streamlit-chat
 transformers
+pyttsx3
