@@ -59,4 +59,4 @@ def generate_answer():
 for chat in st.session_state.history:
     st_message(**chat)
 
-st.text_input("Hablá con el chatbot", key="input_text", on_change=generate_answer, placeholder = "Sólo entiendo en inglés")
+st.text_input("Hablá con el chatbot (¡en inglés!)", key="input_text", on_change=generate_answer, placeholder = "Sólo entiendo en inglés")
