@@ -2,3 +2,7 @@ streamlit
 nltk
 streamlit-chat
 transformers
+os
+numpy
+matplotlib
+pillow
