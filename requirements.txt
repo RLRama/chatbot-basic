@@ -2,8 +2,3 @@ streamlit
 nltk
 streamlit-chat
 transformers
-#prueba voiceBot
-pyttsx3
-SpeechRecognition
-PyAudio
-pywhatkit
