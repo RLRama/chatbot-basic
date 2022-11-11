@@ -1,6 +1,6 @@
 streamlit
-nltk
 streamlit-chat
+pytorch
 transformers
 numpy
 matplotlib
