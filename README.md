@@ -1,5 +1,5 @@
 # Información de proyecto
-Proyecto de inteligencia artificial para chatbot y visión artificial en Python usando las librerías Streamlit, Pillow, matplotlib, streamlit-chat y Transformers.
+- Proyecto de inteligencia artificial para chatbot y visión artificial en Python usando las librerías Streamlit, Pillow, matplotlib, streamlit-chat y Transformers.
 En la página del proyecto encontramos 3 páginas, una para llevar a cabo una conversación (en inglés) con el chatbot, otra para crear una imagen de arte ASCII personalizada y otra con la información de cátedra.
 ---
 # Integrantes del equipo:
