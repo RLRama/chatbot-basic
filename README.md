@@ -6,7 +6,6 @@
 - [Perfil en GitHub](https://github.com/SantiDominguez1)
 - [Perfil en LinkedIn](https://www.linkedin.com/in/santiago-ismael-dominguez-sotomayor-a55009225//)
 ---
-
 - Rios Lopez Ramiro Ignacio - EISI801
 - [Perfil en GitHub](https://github.com/RLRama)
 - [Perfil en LinkedIn](https://www.linkedin.com/in/ramiro-ignacio-rios-lopez-bb1006225/)
