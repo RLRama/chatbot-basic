@@ -36,7 +36,7 @@
 
 # Estado del proyecto
 
-- Actualmente no se puede utilizar por una dependencia obsoleta.
+- Actualmente no funciona el módulo del chatbot por una dependencia obsoleta, pero el módulo de visión de máquina funciona correctamente
 
 ---
 
